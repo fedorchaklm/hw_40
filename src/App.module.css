@@ -44,8 +44,13 @@ input {
   text-align: center;
 }
 
-button[type="submit"] {
+button[type="submit"],
+.clearBtn {
   width: 100%;
+}
+
+.clearBtn {
+ margin-bottom: 20px;
 }
 
 .user_info,

@@ -1,4 +1,5 @@
 .note_list {
+  width: 100%;
   color: var(--main-color);
   list-style: none;
 }
