@@ -5,8 +5,6 @@ import NoteItem from "./components/NoteItem/NoteItem";
 import { addNote, clearNotes, useAppDispatch, useAppSelector } from "./store";
 
 function App() {
-  // const [notes, setNotes] = useState<Array<string>>(JSON.parse(localStorage.getItem('notes') ?? '[]'));
-  // const [notes, setNotes] = useState<Array<string>>([]);
   const noteInput = useRef<HTMLInputElement>(null);
   const [user, setUser] = useState<{ name: string } | null>(null);
   const [error, setError] = useState<string>("");
@@ -22,14 +20,9 @@ function App() {
       .catch(() => setError("Something went wrong"));
   }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem('notes', JSON.stringify(notes));
-  // }, [notes]);
-
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (noteInput.current != null && noteInput.current.value !== "") {
-      // setNotes([noteInput.current?.value, ...notes]);
       dispatch(addNote(noteInput.current.value ));
       noteInput.current.value = "";
     }
@@ -42,12 +35,6 @@ function App() {
       titleInput.current.value = "";
     }
   }
-
-  // function handleDelete(index: number) {
-  //   notes.splice(index, 1);
-  //   dispatch(clearNotes());
-  //   setNotes([...notes]);
-  // }
 
   if (error) {
     return <p className={styles.error_info}>Error: {error} </p>;
@@ -89,7 +76,6 @@ function App() {
             <NoteItem
               note={note}
               key={index}
-              // onDelete={() => handleDelete(index)}
             />
           ))
         )}
