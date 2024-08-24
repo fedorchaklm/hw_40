@@ -23,7 +23,7 @@ function App() {
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (noteInput.current != null && noteInput.current.value !== "") {
-      dispatch(addNote(noteInput.current.value ));
+      dispatch(addNote(noteInput.current.value));
       noteInput.current.value = "";
     }
   }
@@ -68,22 +68,23 @@ function App() {
         />
         <button type="submit">Change title</button>
       </form>
-      <NoteList title={title}>
-        {notes.length === 0 ? (
-          <p className={styles.notes_wrap}>There are no notes</p>
-        ) : (
-          notes.map((note, index) => (
-            <NoteItem
-              note={note}
-              key={index}
-            />
-          ))
-        )}
-      </NoteList>
-      {
-        notes.length !== 0 && 
-        <button className={styles.clearBtn} onClick={() => dispatch(clearNotes())}>Delete notes</button>
-      }
+      {notes.length === 0 ? (
+        <p className={styles.notes_wrap}>There are no notes</p>
+      ) : (
+        <>
+          <NoteList title={title}>
+            {notes.map((note, index) => (
+              <NoteItem note={note} key={index} />
+            ))}
+          </NoteList>
+          <button
+            className={styles.clearBtn}
+            onClick={() => dispatch(clearNotes())}
+          >
+            Delete notes
+          </button>
+        </>
+      )}
     </div>
   );
 }
