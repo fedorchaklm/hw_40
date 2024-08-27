@@ -2,7 +2,8 @@ import styles from "./App.module.css";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import NoteList from "./components/NoteList/NoteList";
 import NoteItem from "./components/NoteItem/NoteItem";
-import { addNote, clearNotes, useAppDispatch, useAppSelector } from "./store";
+import {useAppDispatch, useAppSelector } from "./store/store";
+import { addNote, clearNotes } from "./store/notes";
 
 function App() {
   const noteInput = useRef<HTMLInputElement>(null);
@@ -10,7 +11,7 @@ function App() {
   const [error, setError] = useState<string>("");
   const [title, setTitle] = useState("");
   const titleInput = useRef<HTMLInputElement>(null);
-  const notes = useAppSelector((state) => state.notes);
+  const notes = useAppSelector((state) => state.notes.notes);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
